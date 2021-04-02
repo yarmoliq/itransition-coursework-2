@@ -27,6 +27,7 @@ namespace itransition_coursework_2
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+
         {
             services.AddDbContext<NotesContext>(opt => opt.UseSqlServer("Data Source=CMDB-117078;Initial Catalog=itransition-coursework-2;Integrated Security=True"));
 
