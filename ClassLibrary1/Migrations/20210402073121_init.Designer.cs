@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using itransition_coursework_2.Models;
+using ClassLibrary1.Models;
 
 namespace ClassLibrary1.Migrations
 {

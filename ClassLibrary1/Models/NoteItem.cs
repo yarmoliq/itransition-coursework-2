@@ -1,6 +1,8 @@
-﻿namespace itransition_coursework_2.Models
+﻿using ClassLibrary1.Interfaces;
+
+namespace ClassLibrary1.Models
 {
-    public class NoteItem
+    public class NoteItem : IEntity 
     {
         public long Id { get; set; }
         public string Title { get; set; }

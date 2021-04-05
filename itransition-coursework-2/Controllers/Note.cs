@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using itransition_coursework_2.Models;
+
+using ClassLibrary1.Models;
+using ClassLibrary1.Models.EfCore;
 
 namespace itransition_coursework_2.Controllers
 {
@@ -13,97 +15,62 @@ namespace itransition_coursework_2.Controllers
     [ApiController]
     public class Note : ControllerBase
     {
-        private readonly NotesContext _context;
+        private readonly NoteRepository _repository;
 
-        public Note(NotesContext context)
+        public Note(NoteRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        // GET: api/Note
+        // GET: api/[controller]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NoteItem>>> GetNoteItems()
+        public async Task<ActionResult<IEnumerable<NoteItem>>> Get()
         {
-            return await _context.NoteItems.ToListAsync();
+            return await _repository.GetAll();
         }
 
-        // GET: api/Note/5
+        // GET: api/[controller]/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<NoteItem>> GetNoteItem(long id)
+        public async Task<ActionResult<NoteItem>> Get(int id)
         {
-            var noteItem = await _context.NoteItems.FindAsync(id);
-
-            if (noteItem == null)
+            var note = await _repository.Get(id);
+            if (note == null)
             {
                 return NotFound();
             }
-
-            return noteItem;
+            return note;
         }
 
-        // PUT: api/Note/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // PUT: api/[controller]/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNoteItem(long id, NoteItem noteItem)
+        public async Task<IActionResult> Put(int id, NoteItem note)
         {
-            if (id != noteItem.Id)
+            if (id != note.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(noteItem).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NoteItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            await _repository.Update(note);
             return NoContent();
         }
 
-        // POST: api/Note
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // POST: api/[controller]
         [HttpPost]
-        public async Task<ActionResult<NoteItem>> PostNoteItem(NoteItem noteItem)
+        public async Task<ActionResult<NoteItem>> Post(NoteItem note)
         {
-            _context.NoteItems.Add(noteItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetNoteItem", new { id = noteItem.Id }, noteItem);
+            await _repository.Add(note);
+            return CreatedAtAction("Get", new { id = note.Id }, note);
         }
 
-        // DELETE: api/Note/5
+        // DELETE: api/[controller]/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<NoteItem>> DeleteNoteItem(long id)
+        public async Task<ActionResult<NoteItem>> Delete(int id)
         {
-            var noteItem = await _context.NoteItems.FindAsync(id);
-            if (noteItem == null)
+            var note = await _repository.Delete(id);
+            if (note == null)
             {
                 return NotFound();
             }
-
-            _context.NoteItems.Remove(noteItem);
-            await _context.SaveChangesAsync();
-
-            return noteItem;
-        }
-
-        private bool NoteItemExists(long id)
-        {
-            return _context.NoteItems.Any(e => e.Id == id);
+            return note;
         }
     }
 }

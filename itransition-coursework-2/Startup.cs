@@ -12,7 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using itransition_coursework_2.Models;
+using ClassLibrary1.Models;
+using ClassLibrary1.Models.EfCore;
 
 namespace itransition_coursework_2
 {
@@ -30,6 +31,8 @@ namespace itransition_coursework_2
 
         {
             services.AddDbContext<NotesContext>(opt => opt.UseSqlServer("Data Source=CMDB-117078;Initial Catalog=itransition-coursework-2;Integrated Security=True"));
+
+            services.AddScoped<NoteRepository>();
 
             services.AddControllers();
         }
