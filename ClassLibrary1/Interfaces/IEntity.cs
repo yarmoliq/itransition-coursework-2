@@ -1,7 +1,9 @@
-﻿namespace ClassLibrary1.Interfaces
+﻿using System;
+
+namespace ClassLibrary1.Interfaces
 {
     public interface IEntity
     {
-        long Id { get; set; }
+        Guid Id { get; set; }
     }
 }

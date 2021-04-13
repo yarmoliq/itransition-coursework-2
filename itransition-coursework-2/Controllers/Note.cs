@@ -31,7 +31,7 @@ namespace itransition_coursework_2.Controllers
 
         // GET: api/[controller]/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<NoteItem>> Get(int id)
+        public async Task<ActionResult<NoteItem>> Get(Guid id)
         {
             var note = await _repository.Get(id);
             if (note == null)
@@ -43,7 +43,7 @@ namespace itransition_coursework_2.Controllers
 
         // PUT: api/[controller]/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, NoteItem note)
+        public async Task<IActionResult> Put(Guid id, NoteItem note)
         {
             if (id != note.Id)
             {
@@ -63,7 +63,7 @@ namespace itransition_coursework_2.Controllers
 
         // DELETE: api/[controller]/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<NoteItem>> Delete(int id)
+        public async Task<ActionResult<NoteItem>> Delete(Guid id)
         {
             var note = await _repository.Delete(id);
             if (note == null)
