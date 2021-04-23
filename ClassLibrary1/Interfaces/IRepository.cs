@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1.Interfaces
 {
-    public interface IRepository<T> where T : class, IEntity
+    public interface IRepository<TEntity> where TEntity : class, IEntity
     {
-        Task<List<T>> GetAll();
-        Task<T> Get(Guid id);
-        Task<T> Add(T entity);
-        Task<T> Update(T entity);
-        Task<T> Delete(Guid id);
+        Task<List<TEntity>> GetAll();
+        Task<TEntity> Get(Guid id);
+        Task<TEntity> Add(TEntity entity);
+        Task<TEntity> Update(TEntity entity);
+        Task<TEntity> Delete(Guid id);
     }
 }

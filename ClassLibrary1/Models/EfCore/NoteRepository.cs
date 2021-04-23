@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using ClassLibrary1.Interfaces.EfCore;
+﻿using ClassLibrary1.Interfaces.EfCore;
 
 namespace ClassLibrary1.Models.EfCore
 {
-    public class NoteRepository : EfCoreRepository<NoteItem, NotesContext>
+    public class NoteRepository : EfCoreRepository<NoteItem, ApplicationDbContext>
     {
-        public NoteRepository(NotesContext context) : base(context) { }
+        public NoteRepository(ApplicationDbContext context) : base(context) { }
     }
 }

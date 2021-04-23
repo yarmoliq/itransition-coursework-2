@@ -5,7 +5,7 @@ using ClassLibrary1.Interfaces;
 
 namespace ClassLibrary1.Models
 {
-    class AppUser : IdentityUser<Guid>, IDeletable, IAuditable, IEntity
+    public class AppUser : IdentityUser<Guid>, IDeletable, IAuditable, IEntity
     {
         public bool isDeleted { get; set; }
 

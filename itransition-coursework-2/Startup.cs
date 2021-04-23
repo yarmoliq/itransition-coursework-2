@@ -1,19 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 using ClassLibrary1.Models;
 using ClassLibrary1.Models.EfCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace itransition_coursework_2
 {
@@ -28,13 +22,15 @@ namespace itransition_coursework_2
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-
         {
-            services.AddDbContext<NotesContext>(opt => opt.UseSqlServer("Data Source=CMDB-117078;Initial Catalog=itransition-coursework-2;Integrated Security=True"));
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer("Data Source=CMDB-117078;Initial Catalog=itransition-coursework-2;Integrated Security=True"));
 
             services.AddScoped<NoteRepository>();
+            services.AddScoped<UserRepository>();
 
             services.AddControllers();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +45,7 @@ namespace itransition_coursework_2
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

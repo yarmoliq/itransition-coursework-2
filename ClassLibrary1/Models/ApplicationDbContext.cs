@@ -2,13 +2,14 @@
 
 namespace ClassLibrary1.Models
 {
-    public class NotesContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public NotesContext(DbContextOptions options)
+        public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {
         }
 
         public DbSet<NoteItem> NoteItems { get; set; }
+        public DbSet<AppUser> Users { get; set; }
     }
 }

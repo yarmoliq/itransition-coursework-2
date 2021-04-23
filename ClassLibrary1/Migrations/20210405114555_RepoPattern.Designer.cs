@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
-    [DbContext(typeof(NotesContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210405114555_RepoPattern")]
     partial class RepoPattern
     {

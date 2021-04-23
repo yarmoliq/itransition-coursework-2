@@ -8,7 +8,7 @@ using ClassLibrary1.Models;
 
 namespace ClassLibrary1.Migrations
 {
-    [DbContext(typeof(NotesContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210402073121_init")]
     partial class init
     {
