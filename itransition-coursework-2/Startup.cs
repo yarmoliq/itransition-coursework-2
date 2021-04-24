@@ -38,7 +38,7 @@ namespace itransition_coursework_2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, ApplicationDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -51,8 +51,6 @@ namespace itransition_coursework_2
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            ClassLibrary1.Configuration.MyIdentityDataInitializer.SeedUsers(context, userManager);
 
             app.UseEndpoints(endpoints =>
             {
