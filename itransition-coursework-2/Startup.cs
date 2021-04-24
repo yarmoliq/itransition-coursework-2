@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ClassLibrary1.Models;
 using ClassLibrary1.Models.EfCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 namespace itransition_coursework_2
 {
@@ -23,10 +24,13 @@ namespace itransition_coursework_2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer("Data Source=CMDB-117078;Initial Catalog=itransition-coursework-2;Integrated Security=True"));
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<NoteRepository>();
             services.AddScoped<UserRepository>();
+
+            services.AddIdentityCore<AppUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllers();
 
@@ -34,7 +38,7 @@ namespace itransition_coursework_2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -47,6 +51,8 @@ namespace itransition_coursework_2
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            ClassLibrary1.Configuration.MyIdentityDataInitializer.SeedUsers(context, userManager);
 
             app.UseEndpoints(endpoints =>
             {
