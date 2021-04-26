@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using ClassLibrary1.Models;
-using ClassLibrary1.Configuration;
+using DataAccess.Models;
+using DataAccess.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassLibrary1.Models
+namespace DataAccess.Models
 {
     public class ApplicationDbContext : DbContext
     {

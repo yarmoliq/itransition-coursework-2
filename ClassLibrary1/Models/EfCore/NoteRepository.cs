@@ -1,6 +1,6 @@
-﻿using ClassLibrary1.Interfaces.EfCore;
+﻿using DataAccess.Interfaces.EfCore;
 
-namespace ClassLibrary1.Models.EfCore
+namespace DataAccess.Models.EfCore
 {
     public class NoteRepository : EfCoreRepository<NoteItem, ApplicationDbContext>
     {

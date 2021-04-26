@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-using ClassLibrary1.Interfaces;
+using DataAccess.Interfaces;
 
-namespace ClassLibrary1.Models
+namespace DataAccess.Models
 {
     public class AppUser : IdentityUser<Guid>, IDeletable, IAuditable, IEntity
     {

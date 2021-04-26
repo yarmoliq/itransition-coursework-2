@@ -1,4 +1,4 @@
-﻿using ClassLibrary1.Models;
+﻿using DataAccess.Models;
 using itransition_coursework_2.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Identity;

@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Identity;
 
 using MediatR;
 
-using ClassLibrary1.Models;
-using ClassLibrary1.Models.EfCore;
+using DataAccess.Models;
+using DataAccess.Models.EfCore;
 using itransition_coursework_2.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;

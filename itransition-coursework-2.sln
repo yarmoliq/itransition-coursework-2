@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "itransition-coursework-2", "itransition-coursework-2\itransition-coursework-2.csproj", "{98C299A9-4BD5-44DF-83DF-B5735A908AB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{C9229B76-5D12-47D7-A889-1CBBE469C13E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "ClassLibrary1\DataAccess.csproj", "{C9229B76-5D12-47D7-A889-1CBBE469C13E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1.Interfaces
+namespace DataAccess.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class, IEntity
     {

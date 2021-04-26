@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-using ClassLibrary1.Models;
-using ClassLibrary1.Models.EfCore;
+using DataAccess.Models;
+using DataAccess.Models.EfCore;
 
 namespace itransition_coursework_2.Controllers
 {

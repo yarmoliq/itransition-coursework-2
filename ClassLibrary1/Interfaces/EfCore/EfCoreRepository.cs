@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassLibrary1.Interfaces.EfCore
+namespace DataAccess.Interfaces.EfCore
 {
 
     public abstract class EfCoreRepository<TEntity, TContext> : IRepository<TEntity>

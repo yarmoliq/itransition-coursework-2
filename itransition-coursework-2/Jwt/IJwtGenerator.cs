@@ -2,6 +2,6 @@
 {
     public interface IJwtGenerator
     { 
-        string CreateToken(ClassLibrary1.Models.AppUser user);
+        string CreateToken(DataAccess.Models.AppUser user);
     }
 }

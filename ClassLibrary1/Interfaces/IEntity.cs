@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary1.Interfaces
+namespace DataAccess.Interfaces
 {
     public interface IEntity
     {

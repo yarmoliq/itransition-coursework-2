@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-using ClassLibrary1.Models;
+using DataAccess.Models;
 
 
-namespace ClassLibrary1.Configuration
+namespace DataAccess.Configuration
 {
     public class MyIdentityDataInitializer
     {

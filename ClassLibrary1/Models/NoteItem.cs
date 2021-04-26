@@ -1,8 +1,8 @@
 ﻿using System;
 
-using ClassLibrary1.Interfaces;
+using DataAccess.Interfaces;
 
-namespace ClassLibrary1.Models
+namespace DataAccess.Models
 {
     public class NoteItem : IDeletable, IAuditable, IEntity
     {
