@@ -18,20 +18,20 @@ namespace ClassLibrary1.Configuration
             if (await context.Users.AnyAsync())
                 return;
 
-            var user1 = (new AppUser { FirstName = "Kot", LastName = "Popugaev" });
-            await userManager.CreateAsync(user1);
+            var user1 = (new AppUser { UserName = "user1", Email = "user1@email.com", FirstName = "Kot", LastName = "Popugaev" });
+            await userManager.CreateAsync(user1, "#FoRk1337");
             context.Users.Add(user1);
 
-            var user2 = (new AppUser { FirstName = "Pes", LastName = "Sharik" });
-            await userManager.CreateAsync(user2);
+            var user2 = (new AppUser { UserName = "user2", Email = "user2@email.com", FirstName = "Pes", LastName = "Sharik" });
+            await userManager.CreateAsync(user2, "#FoRk1337");
             context.Users.Add(user2);
 
-            var user3 = (new AppUser { FirstName = "Tim", LastName = "Kooc" });
-            await userManager.CreateAsync(user3);
+            var user3 = (new AppUser { UserName = "user3", Email = "user3@email.com", FirstName = "Tim", LastName = "Kooc" });
+            await userManager.CreateAsync(user3, "#FoRk1337");
             context.Users.Add(user3);
 
-            var user4 = (new AppUser { FirstName = "Senior", LastName = "Developer" });
-            await userManager.CreateAsync(user4);
+            var user4 = (new AppUser { UserName = "user4", Email = "user4@email.com", FirstName = "Senior", LastName = "Developer" });
+            await userManager.CreateAsync(user4, "#FoRk1337");
             context.Users.Add(user4);
 
             context.SaveChanges();

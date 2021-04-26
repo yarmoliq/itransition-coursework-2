@@ -13,11 +13,11 @@ namespace itransition_coursework_2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Note : ControllerBase
+    public class NoteController : ControllerBase
     {
         private readonly NoteRepository _repository;
 
-        public Note(NoteRepository repository)
+        public NoteController(NoteRepository repository)
         {
             _repository = repository;
         }
