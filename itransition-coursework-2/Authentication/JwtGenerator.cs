@@ -9,15 +9,15 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace itransition_coursework_2.Jwt
+namespace itransition_coursework_2.Authentication
 {
     public class JwtGenerator : IJwtGenerator
     {
         private readonly SymmetricSecurityKey _key;
 
-        public JwtGenerator(IConfiguration config)
+        public JwtGenerator(IConfiguration configuration)
         {
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"]));
         }
 
         public string CreateToken(AppUser user)

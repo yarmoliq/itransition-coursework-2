@@ -1,4 +1,4 @@
-﻿namespace itransition_coursework_2.Jwt
+﻿namespace itransition_coursework_2.Authentication
 {
     public interface IJwtGenerator
     { 

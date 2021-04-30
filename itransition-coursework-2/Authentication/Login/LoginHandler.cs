@@ -1,5 +1,5 @@
 ﻿using DataAccess.Models;
-using itransition_coursework_2.Jwt;
+using itransition_coursework_2.Authentication;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -8,9 +8,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace itransition_coursework_2.Login
+namespace itransition_coursework_2.Authentication.Login
 {
-	public class LoginHandler : IRequestHandler<LoginQuery, UserLoginModel>
+	public class LoginHandler : IRequestHandler<LoginQuery, UserAuthenticationModel>
 	{
 		private readonly UserManager<AppUser> _userManager;
 
@@ -25,7 +25,7 @@ namespace itransition_coursework_2.Login
 			_jwtGenerator = jwtGenerator;
 		}
 
-		public async Task<UserLoginModel> Handle(LoginQuery request, CancellationToken cancellationToken)
+		public async Task<UserAuthenticationModel> Handle(LoginQuery request, CancellationToken cancellationToken)
 		{
 			var user = await _userManager.FindByEmailAsync(request.Email);
 			if (user == null)
@@ -37,7 +37,7 @@ namespace itransition_coursework_2.Login
 
 			if (result.Succeeded)
 			{
-				return new UserLoginModel
+				return new UserAuthenticationModel
 				{
 					FirstName = user.FirstName,
 					Token = _jwtGenerator.CreateToken(user),

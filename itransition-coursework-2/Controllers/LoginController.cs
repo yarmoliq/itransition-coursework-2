@@ -1,12 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using DataAccess.Models;
+using itransition_coursework_2.Authentication.Login;
 
-namespace itransition_coursework_2.Login
+namespace itransition_coursework_2.Controllers
 {
     [AllowAnonymous]
     [Route("api/[controller]")]
@@ -14,15 +13,14 @@ namespace itransition_coursework_2.Login
     public class LoginController
     {
         private IMediator _mediator;
-        //protected IMediator Mediator;
 
-        public LoginController(IMediator m)
+        public LoginController(IMediator mediator)
         {
-            _mediator = m;
+            _mediator = mediator;
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserLoginModel>> LoginAsync(LoginQuery query)
+        public async Task<ActionResult<UserAuthenticationModel>> LoginAsync(LoginQuery query)
         {
             return await _mediator.Send(query);
         }

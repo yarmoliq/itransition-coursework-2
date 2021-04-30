@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace itransition_coursework_2.Login
+﻿namespace DataAccess.Models
 {
-    public class UserLoginModel
+    public class UserAuthenticationModel
     {
         public string FirstName { get; set; }
 
