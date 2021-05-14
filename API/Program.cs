@@ -35,7 +35,7 @@ namespace API
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     var userManager = services.GetRequiredService<UserManager<AppUser>>();
 
-                    MyIdentityDataInitializer.SeedUsers(context, userManager).Wait();
+                    MyIdentityDataInitializer.SeedUsers(context, userManager);
                 }
                 catch (Exception ex)
                 {

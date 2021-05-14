@@ -10,11 +10,11 @@ namespace API.Controllers
     [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController
+    public class AccountController
     {
         private IMediator _mediator;
 
-        public LoginController(IMediator mediator)
+        public AccountController(IMediator mediator)
         {
             _mediator = mediator;
         }
