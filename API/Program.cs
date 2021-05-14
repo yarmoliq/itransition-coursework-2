@@ -12,7 +12,7 @@ using DataAccess.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace itransition_coursework_2
+namespace API
 {
     public class Program
     {

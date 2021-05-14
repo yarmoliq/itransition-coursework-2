@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using DataAccess.Models;
 
-namespace itransition_coursework_2.Authentication.Login
+namespace API.Authentication.Login
 {
 	public class LoginQuery : IRequest<UserAuthenticationModel>
 	{

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using DataAccess.Models;
 using DataAccess.Models.EfCore;
 
-namespace itransition_coursework_2.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

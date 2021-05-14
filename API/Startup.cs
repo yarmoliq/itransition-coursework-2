@@ -10,15 +10,15 @@ using MediatR;
 
 using DataAccess.Models;
 using DataAccess.Models.EfCore;
-using itransition_coursework_2.Authentication.Login;
+using API.Authentication.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using itransition_coursework_2.Authentication;
+using API.Authentication;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace itransition_coursework_2
+namespace API
 {
     public class Startup
     {

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using DataAccess.Models;
-using itransition_coursework_2.Authentication.Login;
+using API.Authentication.Login;
 
-namespace itransition_coursework_2.Controllers
+namespace API.Controllers
 {
     [AllowAnonymous]
     [Route("api/[controller]")]
@@ -19,7 +19,7 @@ namespace itransition_coursework_2.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<UserAuthenticationModel>> LoginAsync(LoginQuery query)
         {
             return await _mediator.Send(query);

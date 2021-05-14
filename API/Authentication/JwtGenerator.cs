@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace itransition_coursework_2.Authentication
+namespace API.Authentication
 {
     public class JwtGenerator : IJwtGenerator
     {

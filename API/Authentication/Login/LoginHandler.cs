@@ -1,5 +1,5 @@
 ﻿using DataAccess.Models;
-using itransition_coursework_2.Authentication;
+using API.Authentication;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace itransition_coursework_2.Authentication.Login
+namespace API.Authentication.Login
 {
 	public class LoginHandler : IRequestHandler<LoginQuery, UserAuthenticationModel>
 	{

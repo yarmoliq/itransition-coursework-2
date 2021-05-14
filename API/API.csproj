@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>itransition_coursework_2</RootNamespace>
-    <UserSecretsId>c8c86892-6ee6-441e-b486-8f97a1435930</UserSecretsId>
-    <StartupObject>itransition_coursework_2.Program</StartupObject>
+    <RootNamespace>API</RootNamespace>
+    <StartupObject>API.Program</StartupObject>
+    <UserSecretsId>125f6468-e119-41b9-908a-57f841547ba2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DataAccess.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
 

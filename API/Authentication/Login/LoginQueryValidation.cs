@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace itransition_coursework_2.Authentication.Login
+namespace API.Authentication.Login
 {
 	public class LoginQueryValidation : AbstractValidator<LoginQuery>
 	{
