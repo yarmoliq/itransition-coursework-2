@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 using DataAccess.Models;
 using DataAccess.Models.EfCore;
+using Domain.Services;
 
 namespace API.Controllers
 {
@@ -16,10 +17,12 @@ namespace API.Controllers
     public class NoteController : ControllerBase
     {
         private readonly NoteRepository noteRepository;
+        private readonly CurrentUserService currentUserService;
 
-        public NoteController(NoteRepository noteRepository)
+        public NoteController(NoteRepository noteRepository, CurrentUserService currentUserService)
         {
             this.noteRepository = noteRepository;
+            this.currentUserService = currentUserService;
         }
 
         // GET: api/[controller]
@@ -49,6 +52,8 @@ namespace API.Controllers
             {
                 return BadRequest();
             }
+
+            noteRepository.UserEmail = currentUserService.GetCurrentUserEmail();
             await noteRepository.Update(note);
             return NoContent();
         }
@@ -57,6 +62,7 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<NoteItem>> Post(NoteItem note)
         {
+            noteRepository.UserEmail = currentUserService.GetCurrentUserEmail();
             await noteRepository.Add(note);
             return CreatedAtAction("Get", new { id = note.Id }, note);
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccess.Interfaces
 {
-    interface IDeletable
+    public interface IDeletable
     {
         bool isDeleted { get; set; }
     }

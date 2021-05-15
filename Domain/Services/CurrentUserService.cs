@@ -16,7 +16,7 @@ namespace Domain.Services
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public string GetCurrentUserMail()
+        public string GetCurrentUserEmail()
         {
             return httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
         }
