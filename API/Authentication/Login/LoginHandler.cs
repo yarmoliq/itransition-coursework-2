@@ -12,40 +12,40 @@ namespace API.Authentication.Login
 {
 	public class LoginHandler : IRequestHandler<LoginQuery, UserAuthenticationModel>
 	{
-		private readonly UserManager<AppUser> _userManager;
+		private readonly UserManager<AppUser> userManager;
 
-		private readonly SignInManager<AppUser> _signInManager;
+		private readonly SignInManager<AppUser> signInManager;
 
-		private readonly IJwtGenerator _jwtGenerator;
+		private readonly IJwtGenerator jwtGenerator;
 
 		public LoginHandler(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IJwtGenerator jwtGenerator)
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-			_jwtGenerator = jwtGenerator;
+			this.userManager = userManager;
+			this.signInManager = signInManager;
+			this.jwtGenerator = jwtGenerator;
 		}
 
 		public async Task<UserAuthenticationModel> Handle(LoginQuery request, CancellationToken cancellationToken)
 		{
-			var user = await _userManager.FindByEmailAsync(request.Email);
+			var user = await userManager.FindByEmailAsync(request.Email);
 			if (user == null)
 			{
 				throw new Exception("Couldnt login: email not found");
 			}
 
-			var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+			var result = await signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
-			if (result.Succeeded)
+			if (!result.Succeeded)
 			{
-				return new UserAuthenticationModel
-				{
-					FirstName = user.FirstName,
-					Token = _jwtGenerator.CreateToken(user),
-					UserName = user.UserName
-				};
+				throw new Exception("Couldnt login: wrong password");
 			}
 
-			throw new Exception("Couldnt login: wrong password");
+			return new UserAuthenticationModel
+			{
+				FirstName = user.FirstName,
+				Token = jwtGenerator.CreateToken(user),
+				UserName = user.UserName
+			};
 		}
 	}
 }

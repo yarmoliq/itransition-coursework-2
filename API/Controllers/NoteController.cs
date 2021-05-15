@@ -15,25 +15,25 @@ namespace API.Controllers
     [ApiController]
     public class NoteController : ControllerBase
     {
-        private readonly NoteRepository _repository;
+        private readonly NoteRepository noteRepository;
 
-        public NoteController(NoteRepository repository)
+        public NoteController(NoteRepository noteRepository)
         {
-            _repository = repository;
+            this.noteRepository = noteRepository;
         }
 
         // GET: api/[controller]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<NoteItem>>> Get()
         {
-            return await _repository.GetAll();
+            return await noteRepository.GetAll();
         }
 
         // GET: api/[controller]/5
         [HttpGet("{id}")]
         public async Task<ActionResult<NoteItem>> Get(Guid id)
         {
-            var note = await _repository.Get(id);
+            var note = await noteRepository.Get(id);
             if (note == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace API.Controllers
             {
                 return BadRequest();
             }
-            await _repository.Update(note);
+            await noteRepository.Update(note);
             return NoContent();
         }
 
@@ -57,7 +57,7 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<NoteItem>> Post(NoteItem note)
         {
-            await _repository.Add(note);
+            await noteRepository.Add(note);
             return CreatedAtAction("Get", new { id = note.Id }, note);
         }
 
@@ -65,7 +65,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<NoteItem>> Delete(Guid id)
         {
-            var note = await _repository.Delete(id);
+            var note = await noteRepository.Delete(id);
             if (note == null)
             {
                 return NotFound();

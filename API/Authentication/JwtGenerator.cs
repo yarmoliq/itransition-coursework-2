@@ -13,18 +13,23 @@ namespace API.Authentication
 {
     public class JwtGenerator : IJwtGenerator
     {
-        private readonly SymmetricSecurityKey _key;
+        private readonly SymmetricSecurityKey key;
 
         public JwtGenerator(IConfiguration configuration)
         {
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"]));
+            key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"]));
         }
 
         public string CreateToken(AppUser user)
         {
-            var claims = new List<Claim> { new Claim(JwtRegisteredClaimNames.NameId, user.UserName) };
+            var claims = new List<Claim>
+            {
+                // new Claim(JwtRegisteredClaimNames.NameId,        user.UserName), // copied it. not sure if i need that
+                new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                new Claim(ClaimTypes.Email,          user.Email)
+            };
 
-            var credentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

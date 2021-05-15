@@ -12,17 +12,17 @@ namespace API.Controllers
     [ApiController]
     public class AccountController
     {
-        private IMediator _mediator;
+        private IMediator mediator;
 
         public AccountController(IMediator mediator)
         {
-            _mediator = mediator;
+            this.mediator = mediator;
         }
 
         [HttpPost("Login")]
         public async Task<ActionResult<UserAuthenticationModel>> LoginAsync(LoginQuery query)
         {
-            return await _mediator.Send(query);
+            return await mediator.Send(query);
         }
 
         //[HttpPost("registration")]

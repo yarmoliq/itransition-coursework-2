@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 using MediatR;
 
@@ -46,14 +47,6 @@ namespace API
 
             services.AddMediatR(typeof(LoginHandler).Assembly);
 
-            services.AddControllers(option =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                        .RequireAuthenticatedUser()
-                        .Build();
-                option.Filters.Add(new AuthorizeFilter(policy));
-            });
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
@@ -65,6 +58,16 @@ namespace API
                         ValidateIssuer = false,
                     };
                 });
+
+            services.AddScoped<Domain.Services.CurrentUserService>();
+
+            services.AddControllers(option =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+                option.Filters.Add(new AuthorizeFilter(policy));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
